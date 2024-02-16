@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Donation App</title>
+</head>
+<body>
+    <h1>Food Donation App</h1>
+
+    <h2>Donations:</h2>
+    <ul>
+        {% for donation in donations %}
+            <li>{{ donation.donor_name }} donated {{ donation.quantity }} of {{ donation.food_type }} (Expires: {{ donation.expiration_date }}, Location: {{ donation.location }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Receiver Requests:</h2>
+    <ul>
+        {% for request in requests %}
+            <li>{{ request.receiver_name }} is requesting food (Location: {{ request.location }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Navigation:</h2>
+    <ul>
+        <li><a href="{{ url_for('donate') }}">Donate Food</a></li>
+        <li><a href="{{ url_for('request_food') }}">Request Food</a></li>
+    </ul>
+</body>
+</html>

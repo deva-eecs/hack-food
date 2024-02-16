@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Interface</title>
+</head>
+<body>
+    <h1>Donor Interface</h1>
+
+    <form method="post" onsubmit="showLocationOnGoogleMaps()">
+        {{ form.hidden_tag() }}
+        {{ form.donor_name.label }} {{ form.donor_name(size=32) }}<br>
+        {{ form.food_type.label }} {{ form.food_type(size=32) }}<br>
+        {{ form.quantity.label }} {{ form.quantity(size=32) }}<br>
+        {{ form.expiration_date.label }} {{ form.expiration_date(size=32) }}<br>
+        {{ form.location.label }} {{ form.location(size=32) }}<br>
+        {{ form.submit() }}
+    </form>
+
+    <script>
+        function showLocationOnGoogleMaps() {
+            var locationInput = document.getElementById('location');
+            var locationValue = locationInput.value;
+            var googleMapsLink = 'https://www.google.com/maps/place/' + encodeURIComponent(locationValue);
+            window.open(googleMapsLink, '_blank');
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>
